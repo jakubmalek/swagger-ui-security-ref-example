@@ -1,0 +1,8 @@
+components:
+  schemas:
+    Error:
+      type: object
+      properties:
+        code:
+          type: string
+          description: The error code.

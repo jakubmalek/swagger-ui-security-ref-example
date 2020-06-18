@@ -1,0 +1,11 @@
+components:
+  securitySchemes:
+    oauth2schema:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: http://localhost/authorize
+          tokenUrl: http://localhost/token
+          scopes:
+            scope_a: Scope A
+            scope_b: Scope B

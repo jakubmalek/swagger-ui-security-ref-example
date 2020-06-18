@@ -1,0 +1,62 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Test API
+
+security:
+  - oauth2schema:
+      - scope_a
+      - scope_b
+paths:
+  /bars:
+    get:
+      operationId: listBars
+      description: Returns list of bars.
+      tags:
+      - Bars
+      responses:
+        200:
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Bar"
+              examples:
+                single-bar:
+                   $ref: "#/components/examples/SingleBarExample"
+                two-bars:
+                  $ref: "#/components/examples/TwoBarsExample"
+        500:
+          $ref: "common/responses.yaml#/components/responses/UnexpectedError"
+components:
+  securitySchemes:
+    oauth2schema:
+      $ref: "common/security.yaml#/components/securitySchemes/oauth2schema"
+  schemas:
+    Bar:
+      type: object
+      description: Bar definition.
+      properties:
+        id:
+          type: string
+          description: Bar identifier.
+          example: "15"
+        type:
+          type: string
+          description: Bar type.
+          example: "Yummy"
+  examples:
+    SingleBarExample:
+      description: Example of response with single bar.
+      value:
+        - barId: "1"
+          type: "Colorful"
+    TwoBarsExample:
+      description: Example of response with two bars.
+      value:
+        - barId: "10"
+          type: "Yummy"
+        - barId: "13"
+          type: "Bad"

@@ -1,0 +1,10 @@
+components:
+  responses:
+    UnexpectedError:
+      description: Unexpected error.
+      content:
+        application/json:
+          schema:
+            $ref: "./models.yaml#/components/schemas/Error"
+          example:
+            code: "UNKNOWN_ERROR"
